@@ -1,0 +1,23 @@
+Benjarong - change to install ZK by default
+
+From: Chanwit Kaewkasi <chanwit@gmail.com>
+
+
+---
+ src/java/grails/util/BuildSettings.groovy |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/src/java/grails/util/BuildSettings.groovy b/src/java/grails/util/BuildSettings.groovy
+index 2c9e1b4..724d9f6 100644
+--- a/src/java/grails/util/BuildSettings.groovy
++++ b/src/java/grails/util/BuildSettings.groovy
+@@ -446,7 +446,8 @@ class BuildSettings extends AbstractBuildSettings {
+         }
+ 
+         // If 'grailsHome' is set, add the JAR file dependencies.
+-        defaultPluginMap = [hibernate:grailsVersion, tomcat:grailsVersion]
++        defaultPluginMap = [hibernate:grailsVersion, tomcat:grailsVersion, 
++                            zk:"1.0.1"]
+         defaultPluginSet = defaultPluginMap.keySet()
+ 
+         // Update the base directory. This triggers some extra config.
