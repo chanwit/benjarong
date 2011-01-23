@@ -1,0 +1,22 @@
+Benjarong - change distro name
+
+From: Chanwit Kaewkasi <chanwit@gmail.com>
+
+
+---
+ build.gradle |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/build.gradle b/build.gradle
+index 4fba6e9..0eff157 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -13,7 +13,7 @@ version = '1.3.6'
+ 
+ sourceCompatibility = "1.5"
+ targetCompatibility = "1.5"
+-archivesBaseName = 'grails'
++archivesBaseName = 'benjarong'
+ 
+ configurations {
+     compile.transitive = true

@@ -1,0 +1,25 @@
+Benjarong - change welcome message
+
+From: Chanwit Kaewkasi <chanwit@gmail.com>
+
+
+---
+ .../groovy/grails/cli/GrailsScriptRunner.java      |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/java/org/codehaus/groovy/grails/cli/GrailsScriptRunner.java b/src/java/org/codehaus/groovy/grails/cli/GrailsScriptRunner.java
+index 3c3361b..6e2a7a6 100644
+--- a/src/java/org/codehaus/groovy/grails/cli/GrailsScriptRunner.java
++++ b/src/java/org/codehaus/groovy/grails/cli/GrailsScriptRunner.java
+@@ -118,9 +118,9 @@ public class GrailsScriptRunner {
+ 
+         // Show a nice header in the console when running commands.
+         System.out.println(
+-"Welcome to Grails " + build.getGrailsVersion() + " - http://grails.org/" + '\n' +
++"Welcome to Benjarong " + build.getGrailsVersion() + " - A Grails distro" + '\n' +
+ "Licensed under Apache Standard License 2.0" + '\n' +
+-"Grails home is " + (grailsHome == null ? "not set" : "set to: " + grailsHome) + '\n');
++"Benjarong Home is " + (grailsHome == null ? "not set" : "set to: " + grailsHome) + '\n');
+ 
+         // If there aren't any arguments, then we don't have a command
+         // to execute. So we have to exit.

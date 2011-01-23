@@ -1,0 +1,79 @@
+Benjarong - add ZK to the distro and refactor archive path grails to benjarong
+
+From: Chanwit Kaewkasi <chanwit@gmail.com>
+
+
+---
+ gradle/assemble.gradle |   21 ++++++++++++---------
+ 1 files changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/gradle/assemble.gradle b/gradle/assemble.gradle
+index e4c1d82..a956c04 100644
+--- a/gradle/assemble.gradle
++++ b/gradle/assemble.gradle
+@@ -283,6 +283,9 @@ task pluginsFromSvn {
+             get(src: "http://svn.codehaus.org/grails/trunk/grails-plugins/grails-tomcat/tags/RELEASE_${versionTag}/grails-tomcat-${version}.zip",
+                     dest: grailsTomcatDest, verbose: true, usetimestamp: true)
+ 
++            get(src: "http://svn.codehaus.org/grails-plugins/grails-zk/tags/RELEASE_1_0_1/grails-zk-1.0.1.zip",
++          dest: "$dir/grails-zk-1.0.1.zip", verbose: true, usetimestamp: true)
++
+         }
+     }
+ }
+@@ -291,7 +294,7 @@ binExecutables = ["cygrails", "grails", "grails-debug", "grails-debug.bat", "gra
+ 
+ distSpec = copySpec {
+     from(projectDir) {
+-        into "grails-$version"
++        into "benjarong-$version"
+         include 'lib/', 'gradle/', 'media/', 'samples/', 'scripts/', 'conf/', 'build.gradle', 'build.properties',
+                 'LICENSE', 'INSTALL', "src/", "gradlew.bat","gradle.properties"
+         exclude 'ant/bin'
+@@ -300,38 +303,38 @@ distSpec = copySpec {
+         exclude 'src/grails/grails-macros.xml'
+     }
+     from(projectDir) {
+-    	into "grails-$version"
++    	into "benjarong-$version"
+     	include "gradlew"
+     	fileMode = 0755
+     }
+     from(docs.destinationDir) {
+-        into "grails-$version/doc"
++        into "benjarong-$version/doc"
+     }
+     exclude "**/CVS/**"
+     from(project.files(pluginsFromSvn.dir) { builtBy 'pluginsFromSvn' }) {
+-        into "grails-$version/plugins"
++        into "benjarong-$version/plugins"
+     }
+     from('bin') {
+-        into "grails-$version/bin"
++        into "benjarong-$version/bin"
+         include binExecutables
+         fileMode = 0755
+     }
+     from('src/resources/docs/README') {
+-        into "grails-$version"
++        into "benjarong-$version"
+         filter(ReplaceTokens, tokens: ['grails.version': version])
+     }
+     from("src/resources/bash") {
+         include "startGrails.bat", "startGrails"
+-        into "grails-$version/bin"
++        into "benjarong-$version/bin"
+         filter(ReplaceTokens, tokens: ['grails.version': version])
+         fileMode = 0755
+     }
+     from(libs.destinationDir) {
+-        into "grails-$version/dist"
++        into "benjarong-$version/dist"
+         exclude "*.zip"
+     }
+     from("src/grails/grails-macros.xml") {
+-        into "grails-$version/src/grails"
++        into "benjarong-$version/src/grails"
+         filter(ReplaceTokens, tokens: ['grails.version': version])
+     }
+ }
